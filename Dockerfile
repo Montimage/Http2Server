@@ -12,4 +12,4 @@ EXPOSE 8000
 # Set environment variables to allow the client to connect to the server running on localhost at port 8000
 
 # Start the server
-CMD node server.js 
+CMD node serverNoTls.js 
