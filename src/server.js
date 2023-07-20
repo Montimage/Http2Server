@@ -67,7 +67,7 @@ server.on('error',(error)=>{
 
 const port = 8000;
 
-const ipAddress = '127.0.0.7'; // Replace with the IP address you want to use
+const ipAddress = '127.0.0.1'; // Replace with the IP address you want to use
 console.log("Server listening on port 8000");
 
 server.listen(port,ipAddress);

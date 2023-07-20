@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: my-http2-server
+spec:
+  containers:
+  - name: http2-server
+    image: http2-server:latest
+    ports:
+    - containerPort: 8000  # Replace with the port your application listens on
+
