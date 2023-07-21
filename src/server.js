@@ -25,10 +25,21 @@ server.on('request', (req, res) => {
 
   switch (req.method) {
     case 'GET':
-      const imageStream = fs.createReadStream('image.jpg');
-      res.writeHead(200, { 'Content-Type': 'image/jpg' });
-      imageStream.pipe(res);
-
+      //const imageStream = fs.createReadStream('image.jpg');
+     // res.writeHead(200, { 'Content-Type': 'image/jpg' });
+      //imageStream.pipe(res);
+      try {
+        // For GET requests, respond with an image
+        const data =  fs.readFile('image.jpg');
+        res.writeHead(200, { 'Content-Type': 'image/jpeg' });
+        res.end(data);
+      } catch (err) {
+        // Handle the error if the file cannot be read
+        console.error('Error reading the image file:', err);
+        res.writeHead(500, { 'Content-Type': 'text/plain' });
+        res.end('Internal Server Error');
+      }
+      
       // res.setHeader('Content-Type', 'image/jpg');
       // fs.createReadStream('image.jpg').pipe(res);
      // res.end();
@@ -67,8 +78,9 @@ server.on('error',(error)=>{
 
 const port = 8000;
 
-const ipAddress = '127.0.0.1'; // Replace with the IP address you want to use
+//const ipAddress = '127.0.0.1'; // Replace with the IP address you want to use
 console.log("Server listening on port 8000");
 
-server.listen(port,ipAddress);
+//server.listen(port,ipAddress);
+server.listen(port);
 
